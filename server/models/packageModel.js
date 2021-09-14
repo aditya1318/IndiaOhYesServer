@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
 
 const packageSchema = new mongoose.Schema({
-
-    service_id:{
-      type: mongoose.Schema.ObjectId,
-      ref: 'Service',
-      required: [true, 'A package must have a service ID']
+    service: {
+        type: mongoose.Schema.ObjectId,
+        ref: 'Service',
+        required: [true, 'A package must belong to a service']
     },
+
     title: {
         type: String,
         required: [true, 'A package must have a title']
@@ -19,11 +19,15 @@ const packageSchema = new mongoose.Schema({
 
     points: {
         type: [String],
-        validate: {
-            validator: val => val?.length,
-            message: 'A package must have atleast one point'
-        }
+        default: []
     }
+});
+
+packageSchema.pre('save', function (next) {
+    if (!this.points.length)
+        this.points = undefined;
+
+    next();
 });
 
 module.exports = mongoose.model('Package', packageSchema);

@@ -13,8 +13,4 @@ router
     .patch(packageController.updatePackage)
     .delete(packageController.deletePackage);
 
-    router
-    .route('/getPackages/:id')
-    .get(packageController.getAllPackages);
-
 module.exports = router;

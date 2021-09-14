@@ -17,12 +17,8 @@ exports.createOne = Model => catchAsync(async (req, res, next) => {
 });
 
 // Read all
-exports.getAll = (Model, populateOptions) => catchAsync(async (req, res, next) => {
-    let query = Model.find();
-    if (populateOptions)
-        query = query.populate(populateOptions);
-
-    const data = await query;
+exports.getAll = Model => catchAsync(async (req, res, next) => {
+    const data = await Model.find();
 
     res.json({
         status: 'success',
@@ -34,12 +30,8 @@ exports.getAll = (Model, populateOptions) => catchAsync(async (req, res, next) =
 });
 
 // Read one
-exports.getOne = (Model, populateOptions) => catchAsync(async (req, res, next) => {
-    let query = Model.findById(req.params.id);
-    if (populateOptions)
-        query = query.populate(populateOptions);
-
-    const data = await query;
+exports.getOne = Model => catchAsync(async (req, res, next) => {
+    const data = await Model.findById(req.params.id);
 
     if (!data)
         return next(new AppError('No document found with that ID', 404));

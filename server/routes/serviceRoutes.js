@@ -9,14 +9,8 @@ router
 
 router
     .route('/:id')
- 
     .get(serviceController.getService)
     .patch(serviceController.updateService)
     .delete(serviceController.deleteService);
-
-    router
-    .route('/getServiceByCategoryId/:id')
-    .get(serviceController.getServiceByCategoryId);
-  
 
 module.exports = router;
