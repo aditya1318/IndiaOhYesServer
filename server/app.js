@@ -12,9 +12,10 @@ const
 
 // Main application
 const app = express();
+const port =process.env.PORT || 8000
 
 // Allow other domains to access the API
-app.use(cors({ origin: 'http://localhost:8000', credentials: true }));
+app.use(cors({ origin: 'http://localhost:'+port, credentials: true }));
 
 // Parse JSON into req.body
 app.use(express.json());
