@@ -1,11 +1,11 @@
 // Importing modules
 const
     Package = require('../models/packageModel'),
-    handlerFactory = require('./handlerFactory');
+    factory = require('./handlerFactory');
 
 // Controllers
-exports.createPackage = handlerFactory.createOne(Package);
-exports.getAllPackages = handlerFactory.getAll(Package);
-exports.getPackage = handlerFactory.getOne(Package);
-exports.updatePackage = handlerFactory.updateOne(Package);
-exports.deletePackage = handlerFactory.deleteOne(Package);
+exports.createPackage = factory.createOne(Package);
+exports.getAllPackages = factory.getAll(Package);
+exports.getPackage = factory.getOne(Package);
+exports.updatePackage = factory.updateOne(Package);
+exports.deletePackage = factory.deleteOne(Package);

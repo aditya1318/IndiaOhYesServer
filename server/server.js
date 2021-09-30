@@ -20,5 +20,5 @@ mongoose
 const app = require('./app');
 
 // Set up the server
-const PORT = process.env.NODE_ENV === 'production' ? process.env.PORT : 3000;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Listening at port ${PORT}`));

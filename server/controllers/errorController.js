@@ -9,6 +9,7 @@ const handleJWTError = () => new AppError('Please login again because of invalid
 
 // Final middleware to handle all exceptions in the application
 module.exports = (error, req, res, next) => {
+    console.log(error);
     // Creating a shallow copy of error object
     let err = { ...error };
 
